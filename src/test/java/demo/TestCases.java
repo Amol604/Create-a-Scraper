@@ -60,6 +60,14 @@ public class TestCases extends Wrappers {
 
         driver.manage().window().maximize();
     }
+
+    @AfterTest
+    public void endTest() {
+        driver.close();
+        driver.quit();
+
+    }
+
     @Test
     public void testCase01() throws InterruptedException, StreamWriteException, DatabindException, IOException {
         System.out.println("TestCase 01 Starts");
@@ -82,7 +90,7 @@ public class TestCases extends Wrappers {
         System.out.println("Wait 3");
 
         ArrayList<HashMap<String, Object>> tabledata = new ArrayList<>();
-
+//getting list of all the elements
         for (int i = 0; i <= 4; i++) {
             List<WebElement> rows = driver
                     .findElements(By.xpath("//table[contains(@class,'table')]//tr[contains(@class,'team')]"));
@@ -192,12 +200,4 @@ public class TestCases extends Wrappers {
 
         System.out.println("TestCase02 Ends");
     }
-    @AfterTest
-    public void endTest() {
-        driver.close();
-        driver.quit();
-
-    }
-
-   
 }
